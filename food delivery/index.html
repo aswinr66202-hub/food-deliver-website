@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiffin – Hot food, at your door</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="#" class="logo">tiffin<span>.</span></a>
+    <label class="search">
+      <input id="search" type="search" placeholder="Search biryani, dosa, pizza…" aria-label="Search dishes">
+    </label>
+    <button class="cart-btn" id="openCart" aria-label="Open cart">
+      Cart <span class="badge" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hungry?<br>We're already<br>on the way.</h1>
+      <p>Fresh meals from kitchens near you, at your door in 30 minutes or less.</p>
+      <a href="#menu" class="btn btn-dark">Order now</a>
+    </div>
+    <div class="hero-plate" aria-hidden="true">
+      <span class="float f1">🍛</span>
+      <span class="float f2">🍕</span>
+      <span class="float f3">🥘</span>
+      <span class="float f4">🍔</span>
+      <div class="plate-core">🍜</div>
+    </div>
+  </section>
+
+  <section class="perks">
+    <div><strong>30 min</strong> average delivery</div>
+    <div><strong>₹0</strong> delivery over ₹499</div>
+    <div><strong>Code TIFFIN20</strong> takes 20% off</div>
+  </section>
+
+  <main id="menu" class="menu-wrap">
+    <h2>What are you craving?</h2>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No dishes match that. Try a different word or category.</p>
+  </main>
+
+  <footer class="footer">Made for learning · Tiffin demo project</footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Your cart">
+    <div class="drawer-head">
+      <h3>Your cart</h3>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot" id="cartFoot">
+      <div class="coupon">
+        <input id="couponInput" placeholder="Coupon code">
+        <button class="btn btn-small" id="applyCoupon">Apply</button>
+      </div>
+      <div class="row"><span>Subtotal</span><span id="subTotal">₹0</span></div>
+      <div class="row" id="discountRow" hidden><span>Discount</span><span id="discount">-₹0</span></div>
+      <div class="row"><span>Delivery</span><span id="delivery">₹0</span></div>
+      <div class="row"><span>GST (5%)</span><span id="gst">₹0</span></div>
+      <div class="row total"><span>Total</span><span id="grandTotal">₹0</span></div>
+      <button class="btn btn-red btn-full" id="checkoutBtn">Place order</button>
+    </div>
+  </aside>
+
+  <!-- Checkout modal -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card">
+      <div id="checkoutView">
+        <h3>Where should we deliver?</h3>
+        <form id="checkoutForm">
+          <input name="name" placeholder="Full name" required>
+          <input name="phone" placeholder="Phone number" inputmode="numeric" pattern="[0-9]{10}" title="Enter a 10 digit phone number" required>
+          <textarea name="address" placeholder="Delivery address" rows="3" required></textarea>
+          <div class="pay">
+            <label><input type="radio" name="pay" value="Cash on delivery" checked> Cash on delivery</label>
+            <label><input type="radio" name="pay" value="UPI"> UPI</label>
+            <label><input type="radio" name="pay" value="Card"> Card</label>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="cancelCheckout">Back to cart</button>
+            <button type="submit" class="btn btn-red">Confirm order</button>
+          </div>
+        </form>
+      </div>
+      <div id="successView" hidden>
+        <div class="success-mark">✓</div>
+        <h3>Order placed!</h3>
+        <p id="orderMsg"></p>
+        <ol class="tracker" id="tracker">
+          <li>Order received</li>
+          <li>Preparing your food</li>
+          <li>Out for delivery</li>
+          <li>Delivered</li>
+        </ol>
+        <button class="btn btn-dark" id="doneBtn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
